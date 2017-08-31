@@ -1,0 +1,52 @@
+.navbar-brand{
+    float:left;
+    height:50px;
+    padding:35px 35px;
+    font-size:18px;
+    line-height:20px;
+    background-image: url("/img/bitua-small.png");
+    background-repeat: no-repeat;
+    background-position: left center
+}
+
+.overridecolor1 {
+    
+    background-color: #3C3C3C;
+}
+
+.overridecolor2 {
+    
+    background-color: #FCDF15;
+}
+
+.overridecolor3 {
+        
+    color: #0B99BC;
+}
+
+/* tab color */
+.nav-tabs>li>a {
+  color:#3C3C3C;
+  background-color: #FFFFFF; 
+  border-color: #3C3C3C;
+}
+
+/* active tab color */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #3C3C3C;
+  background-color:#0092D7;
+  border-color: #3C3C3C;
+}
+
+/* hover tab color */
+.nav-tabs>li>a:hover {
+  border-color: #3C3C3C;
+  background-color: #92DCE0;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #0092D7;
+    color: #3C3C3C;
+
+}

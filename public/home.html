@@ -1,0 +1,80 @@
+<div class = "container" ng-controller="homeController" ng-init="initHome()">
+    
+    
+        <ul class="nav nav-tabs" role="navigation">
+              
+            <li class="active"><a href="#/home"><i class="fa fa-home"></i><strong>Home</strong></a></li>
+            <li class=""><a href="#/transfer"><i class="fa fa-exchange"></i><strong>Transfer</strong></a></li>
+            <li class=""><a href="#/redeem"><i class="fa fa-shopping-cart"></i><strong>Redeem</strong></a></li>
+            <li class=""><a href="#/transactions"><i class="fa fa-list-alt"></i><strong>Transactions</strong></a></li>
+            <li class=""><a href="#/settings"><i class="fa fa-wrench"></i><strong>Settings</strong></a></li>
+
+        </ul>
+        <div class="panel panel-primary ">
+            <div class="panel-heading">
+                <h1 class="panel-title"><strong>Home Page for {{current_user}}</strong></h1>
+            </div>
+        </div>
+        
+                
+                <a href="#/home"><i class="fa fa-home fa-3x pull-left fa-border"></i></a>
+                <h1>Welcome {{current_user}}</h1>
+                <p><small>Now you can transact through bitua</small></p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Bitua Balance</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <i class="fa fa-btc"></i> Bitcoin
+                                    </div>
+                                    <div class="col-sm-3">
+                                        {{bitcoinBalance}} 
+                                    </div>
+                                    <div class="col-sm-3">
+                                        tBTC
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <i class="fa fa-star-o"></i> Reward Points
+                                    </div>
+                                    <div class="col-sm-3">
+                                        {{rewardPointBalance}} 
+                                    </div>
+                                    <div class="col-sm-3">
+                                        Points 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Bitua Address</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <canvas id="qr-code"></canvas>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        {{pubKey}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    <div class="alert alert-warning" role="alert">
+        <i class="fa fa-exclamation-triangle"></i> Please note that tBTC represents testnet Bitcoins and not the real Bitcoins
+    </div>
+    
+    
+</div>

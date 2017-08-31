@@ -1,0 +1,116 @@
+<div class = "container" ng-controller="settingsController" ng-init="initSetting()">
+    
+    
+        <ul class="nav nav-tabs" role="navigation">
+              
+            <li class=""><a href="#/home"><i class="fa fa-home"></i><strong>Home</strong></a></li>
+            <li class=""><a href="#/transfer"><i class="fa fa-exchange"></i><strong>Transfer</strong></a></li>
+            <li class=""><a href="#/redeem"><i class="fa fa-shopping-cart"></i><strong>Redeem</strong></a></li>
+            <li class=""><a href="#/transactions"><i class="fa fa-list-alt"></i><strong>Transactions</strong></a></li>
+            <li class="active"><a href="#/settings"><i class="fa fa-wrench"></i><strong>Settings</strong></a></li>
+
+        </ul>
+
+        <div class="panel panel-primary ">
+            <div class="panel-heading">
+                <h1 class="panel-title"><strong> Profile settings for {{current_user}}</strong></h1>
+            </div>
+        </div>
+
+        <div class="panel-default">
+                   <!-- newly added code -->
+            <div class="body-header">
+                <i class="fa fa-wrench fa-3x pull-left fa-border"></i>
+                <p>Profile settings can be changed by the user</p>
+                <p><small>You can change password, Customer Id/Advisor No. and Email Address.</small></p>
+            </div>
+        </div>
+        <hr>  
+    
+        
+         <div class="row">
+            <div class="col-md-12" id="accordion">
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading " data-toggle="collapse" data-parent="#accordion" data-target="#passwordBody" ng-click="firstpaneisopen=!firstpaneisopen; secondpaneisopen=false">
+                            
+                        <h3 class="panel-title">Change Password<i class="fa fa-plus-square" style="float: right;" ng-show='firstpaneisopen'></i><i class="fa fa-minus-square" style="float: right;" ng-hide='firstpaneisopen'></i>
+                        </h3>
+                        
+                    </div>
+                    <div id="passwordBody" class="panel-body panel-collapse collapse in">
+                        <form name="passwordForm" class="form-auth" ng-submit="changePassword()" autocomplete="off" novalidate>
+                        <div class="body-header">
+                            <p class="text-danger" ng-show='formError'><i class="fa fa-exclamation-circle"></i><strong>{{error_message}}</strong></p>
+                            <i class="fa fa-spinner fa-pulse" ng-show='regInProgress'></i>
+                        </div>
+                        <div class="alert alert-success" ng-show="showSuccessAlert">
+                                {{successTextAlert}}
+                        </div>
+                        <div class="form-group password-group" ng-class="{ 'has-error': passwordForm.currentPassword.$dirty &&             passwordForm.currentPassword.$invalid }">
+                            <small class="pull-right text-muted" ng-show=passwordForm.currentPassword.$dirty && passwordForm.currentPassword.$invalid>mandatory</small>
+                            <label class="control-label" >Current Password</label>
+                            <input type="password" name="currentPassword" ng-model="updatePassword.currentPassword"  placeholder="Current Password" class="form-control" required/>
+                        </div>
+                        
+                        <div class="form-group password-group" ng-class="{ 'has-error': passwordForm.newPassword.$dirty && passwordForm.newPassword.$invalid }">
+                            <small class="pull-right text-muted" ng-show=passwordForm.newPassword.$dirty && passwordForm.newPassword.$invalid >mandatory, 8-20 characters in length</small>
+                            <label class="control-label" >New Password</label>
+                            <input type="password" name="newPassword" ng-model="updatePassword.newPassword" placeholder="New Password" class="form-control" ng-minlength="8" ng-maxlength="20" required/>
+                        </div>
+
+                        <div class="form-group confirm-group" ng-class="{ 'has-error': passwordForm.confirmPassword.$dirty && passwordForm.confirmPassword.$invalid }">
+                            <small class="pull-right text-muted" ng-show=passwordForm.confirmPassword.$dirty && passwordForm.confirmPassword.$invalid>mandatory, 8-20 characters in length, must match password</small>
+                            <label class="control-label" >Confirm password</label>
+                            <input type="password" name="confirmPassword" ng-model="confirmPassword" placeholder="Confirm Password" class="form-control" ng-minlength="8" ng-maxlength="20" required>
+                        </div>
+                        
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary" ng-disabled=passwordForm.$invalid>Save</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <br/>
+                <div class="panel panel-primary">
+                    
+                    <!--update Profile-->
+                    <div class="panel-heading" data-toggle="collapse"  data-parent="#accordion" data-target="#profileBody" ng-click="firstpaneisopen=true; secondpaneisopen=!secondpaneisopen">
+                        <h3 class="panel-title">Update Profile<i class="fa fa-minus-square" style="float: right;" ng-show='secondpaneisopen'></i><i class="fa fa-plus-square" style="float: right;" ng-hide='secondpaneisopen'></i></h3>
+                    </div>
+                    <div id="profileBody" class="panel-body panel-collapse collapse">
+                        <form name="profileForm" class="form-auth" ng-submit="updateProfile()" autocomplete="off" novalidate>
+                        <div class="body-header">
+                            <p class="text-danger" ng-show='formError'><i class="fa fa-exclamation-circle"></i><strong>{{profile_error_message}}</strong></p>
+                            <i class="fa fa-spinner fa-pulse" ng-show='profileRegInProgress'></i>
+                        </div>
+                        <div class="alert alert-success" ng-show="showProfileSuccessAlert">
+                                {{profileSuccessTextAlert}}
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error': profileForm.currentPassword.$dirty &&             passwordForm.currentPassword.$invalid }">
+                            <small class="pull-right text-muted" ng-show=profileForm.id.$dirty && profileForm.id.$invalid>mandatory</small>
+                            <label class="control-label" >Customer Id/Advisor No.</label>
+                            <input type="text" name="userId" ng-model="user.userId"  placeholder="Customer Id/Advisor No." class="form-control" required/>
+                        </div>
+                        
+                        <div class="form-group" ng-class="{ 'has-error': profileForm.email.$dirty && profileForm.email.$invalid }">
+                            <small class="pull-right text-muted" ng-show=profileForm.email.$dirty && profileForm.email.$invalid >mandatory</small>
+                            <label class="control-label" >Email address</label>
+                            <input type="email" name="emailid" ng-model="user.emailid" placeholder="Email" class="form-control" required>
+                        </div>
+
+                        
+                        
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary" ng-disabled=profileForm.$invalid>Save</button>
+                        </div>
+                    </div>
+                    <!--End here-->
+                    
+                </div>
+                </form>
+            </div>
+        </div>
+            
+</div>
+<br><br>

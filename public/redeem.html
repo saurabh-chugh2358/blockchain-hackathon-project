@@ -1,0 +1,78 @@
+<div class = "container" ng-controller="redeemController" ng-init="initRedeem()">
+    
+    
+        <ul class="nav nav-tabs" role="navigation">
+              
+            <li class=""><a href="#/home"><i class="fa fa-home"></i><strong>Home</strong></a></li>
+            <li class=""><a href="#/transfer"><i class="fa fa-exchange"></i><strong>Transfer</strong></a></li>
+            <li class="active"><a href="#/redeem"><i class="fa fa-shopping-cart"></i><strong>Redeem</strong></a></li>
+            <li class=""><a href="#/transactions"><i class="fa fa-list-alt"></i><strong>Transactions</strong></a></li>
+            <li class=""><a href="#/settings"><i class="fa fa-wrench"></i><strong>Settings</strong></a></li>
+
+        </ul>
+    
+        <form method="post" name="redeemForm" ng-submit="redeemSubmit()" autocomplete="off" novalidate>
+
+            <div class="panel panel-primary full-page-dialog">
+                
+                    <div class="panel-heading">
+                        <h1 class="panel-title"><strong>Redemption request</strong></h1>
+                    </div>
+                
+                    <div class="panel-body">
+                    
+                        <div class ="row">
+                            <div class="body-header">
+                                <i class="fa fa-shopping-cart fa-3x pull-left fa-border"></i>
+                                <p>Redemption request of reward points to Bitua</p>
+                                <p>
+                                    <small>Currently it is only allowed to request for Investor fees and Service Fee</small>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        <div class="body-header">
+                            <p class="text-danger" ng-show='formError'><i class="fa fa-exclamation-circle"></i><strong>{{error_message}}</strong></p>
+                            <i class="fa fa-spinner fa-pulse" ng-show='regInProgress'></i>
+                        </div>
+                        <div class="alert alert-success" ng-show="showSuccessAlert">
+                                {{successTextAlert}}
+                        </div>
+                        <div class="col-md-12 form-group" ng-class="{ 'has-error': redeemForm.redeemPoint.$dirty &&   
+                                                                                    redeemForm.redeemPoint.$invalid }">    
+                            
+                            <label class="control-label col-sm-3" for="fees">Redemption Points</label>
+                            <div class="col-sm-4" >
+                                <div class="input-group" >
+                                    <input type="number" name="redeemPoints" ng-model="redeem.redeemPoint"
+                                    placeholder="redemptionPoints" class="form-control" required>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-star-o">Points</i>
+                                    </span>
+                                </div>
+                            </div>    
+                        </div>    
+                        
+                        
+                        <div class="col-md-12 form-group">    
+                            <label class="control-label col-sm-3" for="redeemRequestFor">Redemption request for</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <select ng-model="redeem.redeemFor"  class="form-control">
+                                        <option ng-repeat="item in items" value="{{item.name}}">{{item.name}}</option>
+                                     </select>
+                                </div>    
+                            </div>    
+                        </div>
+                                
+                        
+                    </div>
+                
+                    <div class="panel-footer text-right">
+                        <button type="submit" class="btn btn-primary">Send Redemption Request</button>
+                    </div>
+                
+                </div>    
+        </form>
+</div>

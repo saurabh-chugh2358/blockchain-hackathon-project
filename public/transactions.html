@@ -1,0 +1,68 @@
+<div class = "container" ng-controller="transactionsController" ng-init="initTransactions()">
+    
+    
+        <ul class="nav nav-tabs" role="navigation">
+              
+            <li class=""><a href="#/home"><i class="fa fa-home"></i><strong>Home</strong></a></li>
+            <li class=""><a href="#/transfer"><i class="fa fa-exchange"></i><strong>Transfer</strong></a></li>
+            <li class=""><a href="#/redeem"><i class="fa fa-shopping-cart"></i><strong>Redeem</strong></a></li>
+            <li class="active"><a href="#/transactions"><i class="fa fa-list-alt"></i><strong>Transactions</strong></a></li>
+            <li class=""><a href="#/settings"><i class="fa fa-wrench"></i><strong>Settings</strong></a></li>
+
+        </ul>
+
+        <div class="panel panel-primary ">
+            <div class="panel-heading">
+                <h1 class="panel-title"><strong>Transactions done by {{current_user}}</strong></h1>
+            </div>
+        </div>
+               
+        <div class="panel-default">
+                   <!-- newly added code -->
+            <div class="body-header">
+                <i class="fa fa-list-alt fa-3x pull-left fa-border"></i>
+                <p>Transactions done by the user</p>
+                <p><small>These transactions would be carried out on the TestNet Network.</small></p>
+            </div>
+        </div>
+        <hr>  
+       <!--  <form name="userForm" class="form-api" ng-submit="getTransactions()" autocomplete="off" novalidate>
+            <button type="submit">Get Transactions</button>
+        </form> -->
+
+        <!-- Transaction Blocks starts -->
+        <div class="panel-default" >
+            <i class="fa fa-spinner fa-pulse" ng-show='regInProgress'></i>
+            
+            <ul ng-repeat="x in transactions" class="col-md-10 pull-left">
+                <div class="col-md-10 pull-left">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">TransactionId: {{x.transactionId}} </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-4">Transaction Amount:</div>
+                                <div class="col-sm-8">{{x.transactionAmount}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">To Public Key: </div>
+                                <div class="col-sm-8">{{pubKey}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">Time of Transaction:</div>
+                                <div class="col-sm-8">{{x.transactionTimeStamp}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">No. of Confirmations:</div>
+                                <div class="col-sm-8">{{x.noOfConfirmations}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        
+</div>
+
+<br><br>

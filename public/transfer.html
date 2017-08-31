@@ -1,0 +1,80 @@
+<div class = "container" ng-controller="transferController" ng-init="initTransfer()">
+    
+    
+    <ul class="nav nav-tabs" role="navigation">
+              
+        <li class=""><a href="#/home"><i class="fa fa-home"></i><strong>Home</strong></a></li>
+        <li class="active"><a href="#/transfer"><i class="fa fa-exchange"></i><strong>Transfer</strong></a></li>
+        <li class=""><a href="#/redeem"><i class="fa fa-shopping-cart"></i><strong>Redeem</strong></a></li>
+        <li class=""><a href="#/transactions"><i class="fa fa-list-alt"></i><strong>Transactions</strong></a></li>
+        <li class=""><a href="#/settings"><i class="fa fa-wrench"></i><strong>Settings</strong></a></li>
+
+    </ul>
+    
+
+                        
+    <form ng-submit="issue()"  id="send-coins-form">
+        <div class="panel panel-primary full-page-dialog">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Transfer Reward Points</strong></h3>
+            </div>
+            
+            <div class="panel-body">
+                
+                <div class ="row">
+                    <div class="body-header">
+                        <i class="fa fa-exchange fa-3x pull-left fa-border"></i>
+                        <p>Transfer reward points or Bitcoins to another address</p>
+                        <p><small>Fees is optional, however please note adding a transaction fee speeds up the transfer confirmation</small></p>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="col-md-12 form-group ">
+                    <label class="control-label col-sm-3" for="addressTo">To address</label>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="text" ng-model="issueDetail.address" class="form-control" id="addressTo" name="addressTo" placeholder="To address" >
+                            <span class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+    
+                <div class="col-md-12 form-group">
+                    <label class="control-label col-sm-3" for="amount-unit">Amount</label>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <input type="text" ng-model="issueDetail.amount" class="form-control" id="amount-unit" placeholder="Amount">
+                        <span class="input-group-addon">
+                            <i class="fa fa-star-o">Points</i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 form-group">
+                    <label class="control-label col-sm-3" for="fees">Fees</label>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <input class="form-control" ng-model="issueDetail.fees" type="text" id="fees" name="fees" placeholder="Fees" value="0.0001">
+                            <span class="input-group-addon"><i class="fa fa-btc">tBTC </i>
+                            </span>
+                      </div>
+                    </div>
+                  </div>
+
+            </div>
+    
+    
+            <div class="panel-footer text-right">
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+    </div>
+</form>
+
+
+            
+</div>

@@ -1,0 +1,65 @@
+<div class="container" ng-controller="registerController">
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+
+    <form name="userForm" class="form-auth" ng-submit="adminregister()" autocomplete="off" novalidate>
+
+      <div class="panel panel-primary full-page-dialog overridecolor2">
+        <div class="panel-heading">
+          <h3 class="panel-title "><strong>Admin Setup</strong></h3>
+        </div>
+        <div class="panel-body">
+
+          <div class="body-header">
+            <p class="small">Already have an admin account? click <a href="#/adminlogin">here</a> to login</p> 
+            <p class="text-danger" ng-show='formError'><i class="fa fa-exclamation-circle"></i><strong>{{error_message}}</strong></p>
+            <i class="fa fa-spinner fa-pulse" ng-show='regInProgress'></i>
+          </div>
+          <hr>
+
+          <div class="form-group" ng-class="{ 'has-error': userForm.username.$dirty && userForm.username.$invalid }">
+            <small class="pull-right text-muted" ng-show=userForm.username.$dirty & userForm.username.$invalid>mandatory, alphanumeric only, 5-20 characters in length</small>
+            <label class="control-label" for="username">Username</label>
+            <input type="username" name="username" ng-model="user.username" placeholder="Username" class="form-control" ng-pattern="/^[a-zA-Z0-9]*$/" ng-minlength="5" ng-maxlength="20" required>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error': userForm.email.$dirty && userForm.email.$invalid }">
+            <small class="pull-right text-muted" ng-show=userForm.email.$dirty && userForm.email.$invalid>mandatory</small>
+            <label class="control-label" for="email">Email address</label>
+            <input type="email" name="email" ng-model="user.email" placeholder="Email" class="form-control" required>
+          </div>
+
+          <div class="form-group password-group" ng-class="{ 'has-error': userForm.password.$dirty && userForm.password.$invalid }">
+            <small class="pull-right text-muted" ng-show=userForm.password.$dirty && userForm.password.$invalid>mandatory, 8-20 characters in length</small>
+            <label class="control-label" for="password">Password</label>
+            <input type="password" name="password" ng-model="user.password" placeholder="Password" class="form-control" ng-minlength="8" ng-maxlength="20" required>
+          </div>
+
+          <div class="form-group confirm-group" ng-class="{ 'has-error': userForm.confirmPassword.$dirty && userForm.confirmPassword.$invalid }">
+            <small class="pull-right text-muted" ng-show=userForm.confirmPassword.$dirty && userForm.confirmPassword.$invalid>mandatory, 8-20 characters in length, must match password</small>
+            <label class="control-label" for="passwordConfirm">Confirm password</label>
+            <input type="password" name="confirmPassword" ng-model="confirmPassword" placeholder="Confirm Password" class="form-control" ng-minlength="8" ng-maxlength="20" required>
+          </div>
+
+        </div>
+        <div class="panel-footer text-right">
+
+          <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-primary" ng-disabled=userForm.$invalid>Admin Setup</button>
+            </div>
+            </div>
+        </div>
+      </div>
+
+    </form>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+</div>
+</div>
+
