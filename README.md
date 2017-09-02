@@ -12,7 +12,7 @@ Source for the hackathon project to perform transactions on a Bitcoin Test Netwo
 Installing this project is simple, run the following commands in the command prompt:
 
 ```console
->git clone https://github.com/deepaksinghjadon/justDoIt.git
+>git clone https://github.com/saurabh-chugh2358/blockchain-hackathon-project.git
 >cd bitua
 >npm install
 >mongod -dbpath <your mongo db path here>   # start mongodb locally
